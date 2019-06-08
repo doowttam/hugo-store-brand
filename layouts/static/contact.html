@@ -1,0 +1,25 @@
+{{ define "main" }}
+    <div class="mv4 mv6-ns">
+        <h1 class="f1-ns">{{ .Title | upper }}</h1>
+        {{ partial "nav.html" . }}
+        {{ partial "content.html" .Content }}
+
+        <form name="contact" method="POST" data-netlify="true">
+            <div class="mv3">
+                <label for="name" class="b">Name:</label><br>
+                <input class="input-reset ba b--black w5 mv1" type="text" name="name" id="name"/>   
+            </div>
+            <div class="mv3">
+                <label for="email" class="b">Email:</label><br>
+                <input class="input-reset ba b--black w5 mv1" type="email" name="email" id="email"/></label>
+            </div>
+            <div class="mv3">
+                <label for="message" class="b">Message:</label><br>
+                <textarea class="input-reset ba b--black w-100 w5-ns mv1" name="message" id="message"></textarea>
+            </div>
+            <div class="mv3">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+{{ end }}

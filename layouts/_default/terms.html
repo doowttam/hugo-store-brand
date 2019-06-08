@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <div class="mv2">
+        <h1 class="f1">{{ .Title | upper }}</h1>
+        {{ partial "nav.html" . }}
+        {{ $type := .Type }}
+        {{ range $key, $value := .Data.Terms.ByCount }}
+            {{ $name := .Name }}
+            {{ $count := .Count }}
+            {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+                <div class="fl ma2">
+                    <a class="i br3 bg-lightest-blue pa1 link black dim" href="{{ .Permalink }}">
+                        #{{ $name }} ({{ $count }})
+                    </a>
+                </div>
+            {{ end }}
+        {{ end }}
+    </div>
+{{ end }}

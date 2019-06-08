@@ -1,0 +1,29 @@
+<div class="mb3">
+{{ range $i, $e := (.Paginate ( .Pages.ByPublishDate.Reverse )).Pages }}
+    {{ if $i }}<hr>{{ end }}
+    <article class="mv3">
+        <h2 class="f3">
+            <a href="{{ .RelPermalink }}" class="b link dim black">{{ .Title }}</a>
+        </h2>
+        <div class="mb3">
+            {{ partial "date-and-tags.html" . }}
+        </div>
+        {{ if isset .Params "featured_image" }}
+            <div class="flex justify-center nested-neg-margin-img">
+                <div>
+                    {{ partial "img.html" (dict "Page" .Page "src" .Params.featured_image "alt" .Title)}}
+                </div>
+            </div>
+        {{ end }}
+        {{ partial "content.html" .Summary }}
+        {{ if .Truncated }}
+            <div>
+                <a href="{{ .RelPermalink }}" class="b link dim blue">Continue reading {{ .Title }}...</a>
+            </div>
+        {{ end }}
+    </article>
+{{ end }}
+</div>
+<div class="mv4 nested-links nested-list-reset nested-list-flexbox">
+    {{ template "_internal/pagination.html" . }}
+</div>

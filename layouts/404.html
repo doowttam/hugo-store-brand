@@ -1,0 +1,11 @@
+{{ define "main" }}
+    <div class="mv4 mv6-ns">
+        <h1 class="f1-ns">{{ .Title | upper }}</h1>
+        {{ partial "nav.html" . }}
+        <div>
+            <p>
+                Oops. There is no page like that, at least not anymore.
+            </p>
+        </div>
+    </div>
+{{ end }}

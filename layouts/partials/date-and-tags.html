@@ -1,0 +1,13 @@
+{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $dateFormat := .Site.Params.dateFormat | default "January 2, 2006" }}
+<div class="flex justify-between mv2">
+    <time class="pa1 i serif" datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+    {{ with .Params.tags }}
+        <div class="mv1">
+            {{ range . }}
+                {{ $href := print (absURL "tags/") (urlize .) }}
+                <a class="br3 bg-lightest-blue pa1 link black dim i" href="{{ $href }}">#{{ . }}</a>
+            {{ end }}
+        </div>
+    {{ end }}
+</div>

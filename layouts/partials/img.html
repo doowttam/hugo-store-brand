@@ -1,0 +1,13 @@
+{{ $scratch := newScratch }}
+{{ $image := .Page.Resources.GetMatch .src }}
+{{ $scratch.Set "image" $image }}
+
+{{ $maxImageWidth := "1200" }}
+
+{{ if gt $image.Width $maxImageWidth }}
+    {{ $image := $image.Resize (printf "%sx" $maxImageWidth) }}
+    {{ $scratch.Set "image" $image }}
+{{ end }}
+
+{{ $image := $scratch.Get "image" }}
+<img src="{{ $image.RelPermalink }}" {{ with .alt }} alt="{{.}}" {{end}}>
