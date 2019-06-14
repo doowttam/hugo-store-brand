@@ -1,6 +1,6 @@
 {{ define "main" }}
     <div class="mv4">
-        <h1 class="f1-ns">#{{ .Title | upper }}</h1>
+        {{ partial "main-heading.html" (printf "#%s" .Title) }}
         {{ partial "nav.html" . }}
         {{ partial "blog-list.html" . }}
         {{ partial "footer.html" . }}

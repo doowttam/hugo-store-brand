@@ -1,6 +1,6 @@
 {{ define "main" }}
     <div class="mv2">
-        <h1 class="f1">{{ .Title | upper }}</h1>
+        {{ partial "main-heading.html" .Title }}
         {{ partial "nav.html" . }}
         {{ $type := .Type }}
         {{ range $key, $value := .Data.Terms.ByCount }}
