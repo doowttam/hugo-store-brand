@@ -5,7 +5,7 @@
     {{ with .Params.tags }}
         <div class="mv1">
             {{ range . }}
-                {{ $href := print (absURL "tags/") (urlize .) }}
+                {{ $href := print (relURL "tags/") (urlize .) }}
                 <a class="br3 bg-lightest-blue pa1 link black dim i" href="{{ $href }}">#{{ . }}</a>
             {{ end }}
         </div>
